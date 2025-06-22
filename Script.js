@@ -1,51 +1,67 @@
+// Select DOM Elements
 const temperatureField = document.querySelector(".temp");
 const locationField = document.querySelector(".time-location p");
 const dateandTimeField = document.querySelector(".time-location span");
 const conditionField = document.querySelector(".condition p");
 const searchField = document.querySelector(".search-area");
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 
-form.addEventListener('submit', searchForLocation);
-let target = 'Chennai';
+// Default target location
+let target = "Chennai";
 
+// Add form submit listener safely
+if (form) {
+  form.addEventListener("submit", searchForLocation);
+}
+
+// Fetch and display weather results
 const fetchResults = async (targetLocation) => {
   try {
-    let url = `https://api.weatherapi.com/v1/current.json?key=547a812ff4f144fd934174439252106&q=${targetLocation}&aqi=no`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=547a812ff4f144fd934174439252106&q=${targetLocation}&aqi=no`;
     const res = await fetch(url);
-    const data = await res.json();
 
-    let locationName = data.location.name;
-    let time = data.location.localtime;
-    let temp = data.current.temp_c;
-    let condition = data.current.condition.text;
-    updateDetails(temp, locationName, time, condition);
+    if (!res.ok) {
+      throw new Error(`API error: ${res.status}`);
+    }
+
+    const data = await res.json();
+    const { name, localtime } = data.location;
+    const { temp_c, condition } = data.current;
+
+    updateDetails(temp_c, name, localtime, condition.text);
   } catch (err) {
-    alert("Failed to fetch weather data. Please check the city name or API key.");
+    console.error(err);
+    alert("❌ Failed to fetch weather data. Please check the city name or API key.");
   }
 };
 
+// Update the DOM with fetched weather details
 function updateDetails(temp, locationName, time, condition) {
-  let splitDate = time.split(' ')[0];
-  let splitTime = time.split(' ')[1];
-  let currentDay = getDayName(new Date(splitDate).getDay());
+  const [date, timeStr] = time.split(" ");
+  const dayName = getDayName(new Date(date).getDay());
 
-  temperatureField.innerText = temp + " °C";
+  temperatureField.innerText = `${temp} °C`;
   locationField.innerText = locationName;
-  dateandTimeField.innerText = `${splitDate} ${currentDay} ${splitTime}`;
+  dateandTimeField.innerText = `${date} ${dayName} ${timeStr}`;
   conditionField.innerText = condition;
 }
 
+// Handle city search
 function searchForLocation(e) {
   e.preventDefault();
-  target = searchField.value;
-  fetchResults(target);
+  target = searchField.value.trim();
+  if (target) {
+    fetchResults(target);
+  }
 }
 
-function getDayName(number) {
-  return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][number];
+// Get day name from index
+function getDayName(index) {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  return days[index];
 }
 
-// Typing Quotes
+// Typewriter quote effect
 const quotes = [
   "The sun always shines above the clouds.",
   "Wherever you go, bring your own sunshine.",
@@ -58,6 +74,7 @@ let charIndex = 0;
 const typingEl = document.getElementById("typing-quote");
 
 function typeQuote() {
+  if (!typingEl) return;
   if (charIndex < quotes[quoteIndex].length) {
     typingEl.textContent += quotes[quoteIndex].charAt(charIndex);
     charIndex++;
@@ -72,5 +89,8 @@ function typeQuote() {
   }
 }
 
-typeQuote();
-fetchResults(target);
+// Initial execution
+document.addEventListener("DOMContentLoaded", () => {
+  fetchResults(target);
+  typeQuote();
+});
