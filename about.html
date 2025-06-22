@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - WeatherPro</title>
+  <link rel="stylesheet" href="about.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">WeatherPro</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="weather-tips.html">Tips</a></li>
+        <li><a href="about.html" class="active">About US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>About WeatherPro</h1>
+      <p>Trusted by millions. Empowering the world with precision weather intelligence.</p>
+    </div>
+  </section>
+
+  <!-- Infographic -->
+  <section class="infographics">
+    <h2>Global Usage by Region 🌐</h2>
+    <canvas id="usageChart" width="400" height="250"></canvas>
+  </section>
+
+  <!-- Team -->
+  <section class="team-section">
+    <h2>Meet Our Team 👨‍💻</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://i.pravatar.cc/150?img=1" alt="team" />
+        <h3>Arun Kumar</h3>
+        <p>Chief Meteorological Scientist</p>
+      </div>
+      <div class="team-card">
+        <img src="https://i.pravatar.cc/150?img=2" alt="team" />
+        <h3>Priya Mehta</h3>
+        <p>Product Design Lead</p>
+      </div>
+      <div class="team-card">
+        <img src="https://i.pravatar.cc/150?img=3" alt="team" />
+        <h3>Rahul Sen</h3>
+        <p>Data Intelligence Engineer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>User Testimonials 💬</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial active">
+        <p>"WeatherPro helped us plan our outdoor wedding perfectly. Never thought a forecast could be so accurate!"</p>
+        <span>- Anjali G., Chennai</span>
+      </div>
+      <div class="testimonial">
+        <p>"The UI is super smooth, and I love how fast it updates. Better than any weather app I’ve used."</p>
+        <span>- Rajiv M., Delhi</span>
+      </div>
+      <div class="testimonial">
+        <p>"As a farmer, WeatherPro’s alerts have been a game-changer. I rely on it daily."</p>
+        <span>- Ramesh, Coimbatore</span>
+      </div>
+    </div>
+  </section>
+  <canvas id="rain-canvas"></canvas>
+  <script src="rain.js"></script>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 WeatherPro. A VisionCraft MNC Product.</p>
+  </footer>
+
+  <script src="about.js"></script>
+</body>
+</html>
