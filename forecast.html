@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Weather Forecast</title>
+  <link rel="stylesheet" href="forecast.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">WeatherPro</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forecast.html" class="active">Forecast</a></li>
+        <li><a href="weather-tips.html" class="active">Weather Tips</a></li>
+        <li><a href="about.html">About US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="forecast-hero">
+    <h1>🌦 3-Day Forecast</h1>
+    <p>Detailed weather insights with temperature trends and humidity levels.</p>
+  </section>
+
+  <section class="forecast-grid" id="forecast-cards">
+    <!-- JS Injected Cards -->
+  </section>
+
+  <section class="chart-section">
+    <h2>📊 Temperature Trend</h2>
+    <canvas id="tempChart" width="400" height="200"></canvas>
+    <div class="unit-toggle">
+      <label><input type="radio" name="unit" value="C" checked /> °C</label>
+      <label><input type="radio" name="unit" value="F" /> °F</label>
+    </div>
+  </section>
+=
+  <footer>
+    <p>&copy; 2025 WeatherPro. All rights reserved.</p>
+  </footer>
+
+  <script src="forecast.js"></script>
+
+</body>
+</html>

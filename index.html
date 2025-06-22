@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherPro - Live Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">WeatherPro</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="weather-tips.html">Weather Tips</a></li>
+        <li><a href="about.html">About US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <section class="quote-box">
+        <p class="quote-text">"<span id="typing-quote"></span>"</p>
+      </section>
+
+      <h1 class="animate-title">Live Weather Updates</h1>
+      <p class="subtitle">Stay updated with the latest weather conditions in your city</p>
+
+      <form>
+        <input type="text" class="search-area" placeholder="Enter city name" required />
+        <button type="submit">Search</button>
+      </form>
+
+      <section class="weather-display">
+        <div class="temp">-- °C</div>
+        <div class="time-location">
+          <p>City</p>
+          <span>Date Time</span>
+        </div>
+        <div class="condition">
+          <p>Condition</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Forecast Section -->
+  <section id="forecast" class="info-section">
+    <h2>3-Day Weather Forecast</h2>
+    <div class="forecast-grid">
+      <div class="day-card">
+        <h3>Tomorrow</h3>
+        <p>🌤 29°C</p>
+        <p>Humidity: 65%</p>
+      </div>
+      <div class="day-card">
+        <h3>Day 2</h3>
+        <p>🌦 27°C</p>
+        <p>Humidity: 70%</p>
+      </div>
+      <div class="day-card">
+        <h3>Day 3</h3>
+        <p>⛅ 30°C</p>
+        <p>Humidity: 60%</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weather Tips Section -->
+  <section id="tips" class="info-section">
+    <h2>Weather Safety Tips</h2>
+    <ul class="tips-list">
+      <li><strong>☀ Stay Hydrated:</strong> Drink plenty of water during hot weather.</li>
+      <li><strong>☔ Carry an Umbrella:</strong> Be prepared during unpredictable rain.</li>
+      <li><strong>❄ Dress Warm:</strong> Layer up when cold fronts approach.</li>
+      <li><strong>⛈ Avoid Outdoors During Storms:</strong> Seek shelter in safe locations.</li>
+    </ul>
+  </section>
+  <canvas id="rain-canvas"></canvas>
+  <script src="rain.js"></script>
+  
+  <footer>
+    <p>&copy; 2025 WeatherPro. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
